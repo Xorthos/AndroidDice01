@@ -21,7 +21,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="486dp"
-            android:id="@+id/layoutList"></LinearLayout>
+            android:id="@+id/layoutList"
+            android:gravity="center_vertical|center_horizontal"></LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -39,7 +40,9 @@
             <Spinner
                 android:layout_width="64dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/spnDiceAmount" />
+                android:id="@+id/spnDiceAmount"
+                android:layout_weight="0.19"
+                android:spinnerMode="dialog" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"

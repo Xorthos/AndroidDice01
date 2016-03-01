@@ -1,7 +1,10 @@
 package com.example.mads.androiddicegame01;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnRoll;
     Button btnHistory;
     HistoryHelper hh = HistoryHelper.getInstance();
+    int SECOND_ACTIVITY = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +36,7 @@ public class MainActivity extends AppCompatActivity {
         listLayout = (LinearLayout) findViewById(R.id.layoutList);
         btnRoll = (Button) findViewById(R.id.btnRoll);
         btnHistory = (Button) findViewById(R.id.btnHist);
-        btnRoll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                roll();
-            }
-        });
+        initListeners();
         initSpinner();
 
     }
@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
         Date rollTime = new Date();
         Random r = new Random();
         listLayout.removeAllViews();
-        TextView stuff = new TextView(this);
-        stuff.setText(Integer.toString(hh.getAll().size()) + "");
-        listLayout.addView(stuff);
 
         for (int i = 0; i < (int) diceAmount.getSelectedItem(); i++) {
             int random = r.nextInt(6)+1;
@@ -58,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
             listLayout.addView(view);
         }
         hh.add(new BEHistory(rollTime, result));
+
+    }
+
+    private void initListeners() {
+        btnRoll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roll();
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startHistoryActivity();
+            }
+        });
     }
 
     private void initSpinner() {
@@ -66,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
         diceAmount.setAdapter(adapter);
     }
+
+    private void startHistoryActivity() {
+        Intent intent = new Intent();
+        intent.setClass(this, HistoryActivity.class);
+
+        startActivity(intent);
+    }
+
 
 
 }

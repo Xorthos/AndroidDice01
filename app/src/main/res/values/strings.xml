@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidDiceGame01</string>
+    <string name="Back">Back</string>
+    <string name="Clear">Clear</string>
 </resources>
