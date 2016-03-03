@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < (int) diceAmount.getSelectedItem(); i++) {
             int random = r.nextInt(6)+1;
-            TextView view = new TextView(this);
-            view.setText(Integer.toString(random) + "");
+            //TextView view = new TextView(this);
+            //view.setText(Integer.toString(random) + "");
             result.add(random);
-            listLayout.addView(view);
+            ImageView iv= new ImageView(this);
+            iv.setImageResource(GetImageResource.getResorce(random));
+            listLayout.addView(iv);
         }
         hh.add(new BEHistory(rollTime, result));
 
@@ -87,7 +90,4 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-
-
 }

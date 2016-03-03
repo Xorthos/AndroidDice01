@@ -18,24 +18,24 @@
             android:paddingRight="50dp"
             android:id="@+id/txtDate" />
 
-        <TextView
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:id="@+id/txtResult1" />
+            android:id="@+id/imgResult1" />
 
-        <TextView
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:id="@+id/txtResult2" />
+            android:id="@+id/imgResult2" />
 
-        <TextView
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:id="@+id/txtResult3" />
+            android:id="@+id/imgResult3" />
 
-        <TextView
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:id="@+id/txtResult4" />
+            android:id="@+id/imgResult4" />
     </LinearLayout>
 </LinearLayout>

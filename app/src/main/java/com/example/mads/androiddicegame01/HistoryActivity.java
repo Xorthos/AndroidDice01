@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -99,23 +100,26 @@ class HistoryAdapter extends ArrayAdapter<BEHistory> {
         ArrayList<Integer> result = hist.getResult();
 
         TextView date = (TextView) v.findViewById(R.id.txtDate);
-        TextView res1 = (TextView) v.findViewById(R.id.txtResult1);
-        TextView res2 = (TextView) v.findViewById(R.id.txtResult2);
-        TextView res3 = (TextView) v.findViewById(R.id.txtResult3);
-        TextView res4 = (TextView) v.findViewById(R.id.txtResult4);
+        ImageView res1 = (ImageView) v.findViewById(R.id.imgResult1);
+        ImageView res2 = (ImageView) v.findViewById(R.id.imgResult2);
+        ImageView res3 = (ImageView) v.findViewById(R.id.imgResult3);
+        ImageView res4 = (ImageView) v.findViewById(R.id.imgResult4);
 
         date.setText(hist.getTime().toString() + "");
         if(hist.getResult().size() > 0){
-            res1.setText("1: " + Integer.toString(hist.getResult().get(0)));
+            res1.setImageResource(GetImageResource.getResorce(hist.getResult().get(0)));
         }
         if(hist.getResult().size() > 1){
-            res2.setText("2: " + Integer.toString(hist.getResult().get(1)));
+            res2.setImageResource(GetImageResource.getResorce(hist.getResult().get(1)));
+            //res2.setText(Integer.toString(hist.getResult().get(1)));
         }
         if(hist.getResult().size() > 2){
-            res3.setText("3: " + Integer.toString(hist.getResult().get(2)));
+            res3.setImageResource(GetImageResource.getResorce(hist.getResult().get(2)));
+            //res3.setText("3: " + Integer.toString(hist.getResult().get(2)));
         }
         if(hist.getResult().size() > 3){
-            res4.setText("4: " + Integer.toString(hist.getResult().get(3)));
+            //res4.setText("4: " + Integer.toString(hist.getResult().get(3)));
+            res4.setImageResource(GetImageResource.getResorce(hist.getResult().get(3)));
         }
 
         return v;
