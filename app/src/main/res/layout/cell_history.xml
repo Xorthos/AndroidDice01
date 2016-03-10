@@ -6,36 +6,18 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_weight="0.05">
+        android:id="@+id/resultLayout">
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text=""
-            android:paddingRight="50dp"
+            android:paddingRight="5dp"
             android:id="@+id/txtDate" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgResult1" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgResult2" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgResult3" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgResult4" />
     </LinearLayout>
 </LinearLayout>

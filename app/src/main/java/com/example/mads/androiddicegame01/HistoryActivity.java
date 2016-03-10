@@ -1,16 +1,22 @@
 package com.example.mads.androiddicegame01;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +24,8 @@ import java.util.ArrayList;
 
 import BLL.HistoryHelper;
 import Models.BEHistory;
+
+import static android.view.Gravity.CENTER;
 
 /**
  * Created by mads on 2/29/16.
@@ -73,6 +81,8 @@ class HistoryAdapter extends ArrayAdapter<BEHistory> {
 
     ArrayList<BEHistory> history;
 
+    LinearLayout resLayout;
+
     private final int[] colours = {
             Color.parseColor("#AAAAAA"),
             Color.parseColor("#EEEEEE")
@@ -85,13 +95,9 @@ class HistoryAdapter extends ArrayAdapter<BEHistory> {
 
     @Override
     public View getView(int position, View v, ViewGroup parent) {
-        if (v == null) {
             LayoutInflater li = (LayoutInflater) getContext().getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
             v = li.inflate(R.layout.cell_history, null);
-            Log.d("LIST", "Position: " + position + " View created");
-        } else
-            Log.d("LIST", "Position: " + position + " View Reused");
 
 
         v.setBackgroundColor(colours[position % colours.length]);
@@ -100,12 +106,29 @@ class HistoryAdapter extends ArrayAdapter<BEHistory> {
         ArrayList<Integer> result = hist.getResult();
 
         TextView date = (TextView) v.findViewById(R.id.txtDate);
+        resLayout = (LinearLayout) v.findViewById(R.id.resultLayout);
+        date.setText(hist.getTime().toString() + "");
+
+        for (int res: hist.getResult()) {
+
+
+            ImageView resImage = new ImageView(getContext());
+            resImage.setImageResource(GetImageResource.getResorce(res));
+            resImage.setMaxHeight(150);
+            resImage.setAdjustViewBounds(true);
+            resLayout.addView(resImage);
+        }
+        
+        
+        
+        
+        
+        /*
         ImageView res1 = (ImageView) v.findViewById(R.id.imgResult1);
         ImageView res2 = (ImageView) v.findViewById(R.id.imgResult2);
         ImageView res3 = (ImageView) v.findViewById(R.id.imgResult3);
         ImageView res4 = (ImageView) v.findViewById(R.id.imgResult4);
 
-        date.setText(hist.getTime().toString() + "");
         if(hist.getResult().size() > 0){
             res1.setImageResource(GetImageResource.getResorce(hist.getResult().get(0)));
         }
@@ -120,7 +143,7 @@ class HistoryAdapter extends ArrayAdapter<BEHistory> {
         if(hist.getResult().size() > 3){
             //res4.setText("4: " + Integer.toString(hist.getResult().get(3)));
             res4.setImageResource(GetImageResource.getResorce(hist.getResult().get(3)));
-        }
+        }*/
 
         return v;
 
